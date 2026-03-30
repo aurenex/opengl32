@@ -1,4 +1,5 @@
 #include "loader/gl.h"
+#include "logger/logger.h"
 
 decltype(&gl::hk_Accum) gl::fn_Accum = nullptr;
 decltype(&gl::hk_AlphaFunc) gl::fn_AlphaFunc = nullptr;
@@ -683,1685 +684,2022 @@ bool gl::initialize(HMODULE hModule)
 
 void WINAPI gl::hk_Accum(GLenum op, GLfloat value)
 {
+	logger::print("%s %u %f\n", __FUNCTION__, op, value);
 	fn_Accum(op, value);
 }
 
 void WINAPI gl::hk_AlphaFunc(GLenum func, GLclampf ref)
 {
+	logger::print("%s %u %f\n", __FUNCTION__, func, ref);
 	fn_AlphaFunc(func, ref);
 }
 
 GLboolean WINAPI gl::hk_AreTexturesResident(GLsizei n, const GLuint* textures, GLboolean* residences)
 {
+	logger::print("%s %d %p %p\n", __FUNCTION__, n, textures, residences);
 	return fn_AreTexturesResident(n, textures, residences);
 }
 
 void WINAPI gl::hk_ArrayElement(GLint i)
 {
+	logger::print("%s %d\n", __FUNCTION__, i);
 	fn_ArrayElement(i);
 }
 
 void WINAPI gl::hk_Begin(GLenum mode)
 {
+	logger::print("%s %u\n", __FUNCTION__, mode);
 	fn_Begin(mode);
 }
 
 void WINAPI gl::hk_BindTexture(GLenum target, GLuint texture)
 {
+	logger::print("%s %u %u\n", __FUNCTION__, target, texture);
 	fn_BindTexture(target, texture);
 }
 
 void WINAPI gl::hk_Bitmap(GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte* bitmap)
 {
+	logger::print("%s %d %d %f %f %f %f %p\n", __FUNCTION__, width, height, xorig, yorig, xmove, ymove, bitmap);
 	fn_Bitmap(width, height, xorig, yorig, xmove, ymove, bitmap);
 }
 
 void WINAPI gl::hk_BlendFunc(GLenum sfactor, GLenum dfactor)
 {
+	logger::print("%s %u %u\n", __FUNCTION__, sfactor, dfactor);
 	fn_BlendFunc(sfactor, dfactor);
 }
 
 void WINAPI gl::hk_CallList(GLuint list)
 {
+	logger::print("%s %u\n", __FUNCTION__, list);
 	fn_CallList(list);
 }
 
 void WINAPI gl::hk_CallLists(GLsizei n, GLenum type, const GLvoid* lists)
 {
+	logger::print("%s %d %u %p\n", __FUNCTION__, n, type, lists);
 	fn_CallLists(n, type, lists);
 }
 
 void WINAPI gl::hk_Clear(GLbitfield mask)
 {
+	logger::print("%s %d\n", __FUNCTION__, mask);
 	fn_Clear(mask);
 }
 
 void WINAPI gl::hk_ClearAccum(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
+	logger::print("%s %f %f %f %f\n", __FUNCTION__, red, green, blue, alpha);
 	fn_ClearAccum(red, green, blue, alpha);
 }
 
 void WINAPI gl::hk_ClearColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
 {
+	logger::print("%s %f %f %f %f\n", __FUNCTION__, red, green, blue, alpha);
 	fn_ClearColor(red, green, blue, alpha);
 }
 
 void WINAPI gl::hk_ClearDepth(GLclampd depth)
 {
+	logger::print("%s %f\n", __FUNCTION__, depth);
 	fn_ClearDepth(depth);
 }
 
 void WINAPI gl::hk_ClearIndex(GLfloat c)
 {
+	logger::print("%s %f\n", __FUNCTION__, c);
 	fn_ClearIndex(c);
 }
 
 void WINAPI gl::hk_ClearStencil(GLint s)
 {
+	logger::print("%s %d\n", __FUNCTION__, s);
 	fn_ClearStencil(s);
 }
 
 void WINAPI gl::hk_ClipPlane(GLenum plane, const GLdouble* equation)
 {
+	logger::print("%s %u %p\n", __FUNCTION__, plane, equation);
 	fn_ClipPlane(plane, equation);
 }
 
 void WINAPI gl::hk_Color3b(GLbyte red, GLbyte green, GLbyte blue)
 {
+	logger::print("%s %d %d %d\n", __FUNCTION__, red, green, blue);
 	fn_Color3b(red, green, blue);
 }
 
 void WINAPI gl::hk_Color3bv(const GLbyte* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color3bv(v);
 }
 
 void WINAPI gl::hk_Color3d(GLdouble red, GLdouble green, GLdouble blue)
 {
+	logger::print("%s %f %f %f\n", __FUNCTION__, red, green, blue);
 	fn_Color3d(red, green, blue);
 }
 
 void WINAPI gl::hk_Color3dv(const GLdouble* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color3dv(v);
 }
 
 void WINAPI gl::hk_Color3f(GLfloat red, GLfloat green, GLfloat blue)
 {
+	logger::print("%s %f %f %f\n", __FUNCTION__, red, green, blue);
 	fn_Color3f(red, green, blue);
 }
 
 void WINAPI gl::hk_Color3fv(const GLfloat* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color3fv(v);
 }
 
 void WINAPI gl::hk_Color3i(GLint red, GLint green, GLint blue)
 {
+	logger::print("%s %d %d %d\n", __FUNCTION__, red, green, blue);
 	fn_Color3i(red, green, blue);
 }
 
 void WINAPI gl::hk_Color3iv(const GLint* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color3iv(v);
 }
 
 void WINAPI gl::hk_Color3s(GLshort red, GLshort green, GLshort blue)
 {
+	logger::print("%s %d %d %d\n", __FUNCTION__, red, green, blue);
 	fn_Color3s(red, green, blue);
 }
 
 void WINAPI gl::hk_Color3sv(const GLshort* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color3sv(v);
 }
 
 void WINAPI gl::hk_Color3ub(GLubyte red, GLubyte green, GLubyte blue)
 {
+	logger::print("%s %d %d %d\n", __FUNCTION__, red, green, blue);
 	fn_Color3ub(red, green, blue);
 }
 
 void WINAPI gl::hk_Color3ubv(const GLubyte* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color3ubv(v);
 }
 
 void WINAPI gl::hk_Color3ui(GLuint red, GLuint green, GLuint blue)
 {
+	logger::print("%s %u %u %u\n", __FUNCTION__, red, green, blue);
 	fn_Color3ui(red, green, blue);
 }
 
 void WINAPI gl::hk_Color3uiv(const GLuint* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color3uiv(v);
 }
 
 void WINAPI gl::hk_Color3us(GLushort red, GLushort green, GLushort blue)
 {
+	logger::print("%s %d %d %d\n", __FUNCTION__, red, green, blue);
 	fn_Color3us(red, green, blue);
 }
 
 void WINAPI gl::hk_Color3usv(const GLushort* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color3usv(v);
 }
 
 void WINAPI gl::hk_Color4b(GLbyte red, GLbyte green, GLbyte blue, GLbyte alpha)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, red, green, blue, alpha);
 	fn_Color4b(red, green, blue, alpha);
 }
 
 void WINAPI gl::hk_Color4bv(const GLbyte* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color4bv(v);
 }
 
 void WINAPI gl::hk_Color4d(GLdouble red, GLdouble green, GLdouble blue, GLdouble alpha)
 {
+	logger::print("%s %f %f %f %f\n", __FUNCTION__, red, green, blue, alpha);
 	fn_Color4d(red, green, blue, alpha);
 }
 
 void WINAPI gl::hk_Color4dv(const GLdouble* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color4dv(v);
 }
 
 void WINAPI gl::hk_Color4f(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
+	logger::print("%s %f %f %f %f\n", __FUNCTION__, red, green, blue, alpha);
 	fn_Color4f(red, green, blue, alpha);
 }
 
 void WINAPI gl::hk_Color4fv(const GLfloat* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color4fv(v);
 }
 
 void WINAPI gl::hk_Color4i(GLint red, GLint green, GLint blue, GLint alpha)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, red, green, blue, alpha);
 	fn_Color4i(red, green, blue, alpha);
 }
 
 void WINAPI gl::hk_Color4iv(const GLint* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color4iv(v);
 }
 
 void WINAPI gl::hk_Color4s(GLshort red, GLshort green, GLshort blue, GLshort alpha)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, red, green, blue, alpha);
 	fn_Color4s(red, green, blue, alpha);
 }
 
 void WINAPI gl::hk_Color4sv(const GLshort* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color4sv(v);
 }
 
 void WINAPI gl::hk_Color4ub(GLubyte red, GLubyte green, GLubyte blue, GLubyte alpha)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, red, green, blue, alpha);
 	fn_Color4ub(red, green, blue, alpha);
 }
 
 void WINAPI gl::hk_Color4ubv(const GLubyte* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color4ubv(v);
 }
 
 void WINAPI gl::hk_Color4ui(GLuint red, GLuint green, GLuint blue, GLuint alpha)
 {
+	logger::print("%s %u %u %u %u\n", __FUNCTION__, red, green, blue, alpha);
 	fn_Color4ui(red, green, blue, alpha);
 }
 
 void WINAPI gl::hk_Color4uiv(const GLuint* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color4uiv(v);
 }
 
 void WINAPI gl::hk_Color4us(GLushort red, GLushort green, GLushort blue, GLushort alpha)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, red, green, blue, alpha);
 	fn_Color4us(red, green, blue, alpha);
 }
 
 void WINAPI gl::hk_Color4usv(const GLushort* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Color4usv(v);
 }
 
 void WINAPI gl::hk_ColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, red, green, blue, alpha);
 	fn_ColorMask(red, green, blue, alpha);
 }
 
 void WINAPI gl::hk_ColorMaterial(GLenum face, GLenum mode)
 {
+	logger::print("%s %u %u\n", __FUNCTION__, face, mode);
 	fn_ColorMaterial(face, mode);
 }
 
 void WINAPI gl::hk_ColorPointer(GLint size, GLenum type, GLsizei stride, const GLvoid* pointer)
 {
+	logger::print("%s %d %u %d %p\n", __FUNCTION__, size, type, stride, pointer);
 	fn_ColorPointer(size, type, stride, pointer);
 }
 
 void WINAPI gl::hk_CopyPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum type)
 {
+	logger::print("%s %d %d %d %d %u\n", __FUNCTION__, x, y, width, height, type);
 	fn_CopyPixels(x, y, width, height, type);
 }
 
 void WINAPI gl::hk_CopyTexImage1D(GLenum target, GLint level, GLenum internalFormat, GLint x, GLint y, GLsizei width, GLint border)
 {
+	logger::print("%s %u %d %u %d %d %d %d\n", __FUNCTION__, target, level, internalFormat, x, y, width, border);
 	fn_CopyTexImage1D(target, level, internalFormat, x, y, width, border);
 }
 
 void WINAPI gl::hk_CopyTexImage2D(GLenum target, GLint level, GLenum internalFormat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
+	logger::print("%s %u %d %u %d %d %d %d %d\n", __FUNCTION__, target, level, internalFormat, x, y, width, height, border);
 	fn_CopyTexImage2D(target, level, internalFormat, x, y, width, height, border);
 }
 
 void WINAPI gl::hk_CopyTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
+	logger::print("%s %u %d %d %d %d %d\n", __FUNCTION__, target, level, xoffset, x, y, width);
 	fn_CopyTexSubImage1D(target, level, xoffset, x, y, width);
 }
 
 void WINAPI gl::hk_CopyTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
+	logger::print("%s %u %d %d %d %d %d %d %d\n", __FUNCTION__, target, level, xoffset, yoffset, x, y, width, height);
 	fn_CopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
 }
 
 void WINAPI gl::hk_CullFace(GLenum mode)
 {
+	logger::print("%s %u\n", __FUNCTION__, mode);
 	fn_CullFace(mode);
 }
 
 GLint WINAPI gl::hk_DebugEntry(GLint unknown1, GLint unknown2)
 {
+	logger::print("%s %d %d\n", __FUNCTION__, unknown1, unknown2);
 	return fn_DebugEntry(unknown1, unknown2);
 }
 
 void WINAPI gl::hk_DeleteLists(GLuint list, GLsizei range)
 {
+	logger::print("%s %u %d\n", __FUNCTION__, list, range);
 	fn_DeleteLists(list, range);
 }
 
 void WINAPI gl::hk_DeleteTextures(GLsizei n, const GLuint* textures)
 {
+	logger::print("%s %d %p\n", __FUNCTION__, n, textures);
 	fn_DeleteTextures(n, textures);
 }
 
 void WINAPI gl::hk_DepthFunc(GLenum func)
 {
+	logger::print("%s %u\n", __FUNCTION__, func);
 	fn_DepthFunc(func);
 }
 
 void WINAPI gl::hk_DepthMask(GLboolean flag)
 {
+	logger::print("%s %d\n", __FUNCTION__, flag);
 	fn_DepthMask(flag);
 }
 
 void WINAPI gl::hk_DepthRange(GLclampd zNear, GLclampd zFar)
 {
+	logger::print("%s %f %f\n", __FUNCTION__, zNear, zFar);
 	fn_DepthRange(zNear, zFar);
 }
 
 void WINAPI gl::hk_Disable(GLenum cap)
 {
+	logger::print("%s %u\n", __FUNCTION__, cap);
 	fn_Disable(cap);
 }
 
 void WINAPI gl::hk_DisableClientState(GLenum array)
 {
+	logger::print("%s %u\n", __FUNCTION__, array);
 	fn_DisableClientState(array);
 }
 
 void WINAPI gl::hk_DrawArrays(GLenum mode, GLint first, GLsizei count)
 {
+	logger::print("%s %u %d %d\n", __FUNCTION__, mode, first, count);
 	fn_DrawArrays(mode, first, count);
 }
 
 void WINAPI gl::hk_DrawBuffer(GLenum mode)
 {
+	logger::print("%s %u\n", __FUNCTION__, mode);
 	fn_DrawBuffer(mode);
 }
 
 void WINAPI gl::hk_DrawElements(GLenum mode, GLsizei count, GLenum type, const GLvoid* indices)
 {
+	logger::print("%s %u %d %u %p\n", __FUNCTION__, mode, count, type, indices);
 	fn_DrawElements(mode, count, type, indices);
 }
 
 void WINAPI gl::hk_DrawPixels(GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid* pixels)
 {
+	logger::print("%s %d %d %u %u %p\n", __FUNCTION__, width, height, format, type, pixels);
 	fn_DrawPixels(width, height, format, type, pixels);
 }
 
 void WINAPI gl::hk_EdgeFlag(GLboolean flag)
 {
+	logger::print("%s %d\n", __FUNCTION__, flag);
 	fn_EdgeFlag(flag);
 }
 
 void WINAPI gl::hk_EdgeFlagPointer(GLsizei stride, const GLvoid* pointer)
 {
+	logger::print("%s %d %p\n", __FUNCTION__, stride, pointer);
 	fn_EdgeFlagPointer(stride, pointer);
 }
 
 void WINAPI gl::hk_EdgeFlagv(const GLboolean* flag)
 {
+	logger::print("%s %p\n", __FUNCTION__, flag);
 	fn_EdgeFlagv(flag);
 }
 
 void WINAPI gl::hk_Enable(GLenum cap)
 {
+	logger::print("%s %u\n", __FUNCTION__, cap);
 	fn_Enable(cap);
 }
 
 void WINAPI gl::hk_EnableClientState(GLenum array)
 {
+	logger::print("%s %u\n", __FUNCTION__, array);
 	fn_EnableClientState(array);
 }
 
 void WINAPI gl::hk_End(void)
 {
+	logger::print("%s\n", __FUNCTION__);
 	fn_End();
 }
 
 void WINAPI gl::hk_EndList(void)
 {
+	logger::print("%s\n", __FUNCTION__);
 	fn_EndList();
 }
 
 void WINAPI gl::hk_EvalCoord1d(GLdouble u)
 {
+	logger::print("%s %f\n", __FUNCTION__, u);
 	fn_EvalCoord1d(u);
 }
 
 void WINAPI gl::hk_EvalCoord1dv(const GLdouble* u)
 {
+	logger::print("%s %p\n", __FUNCTION__, u);
 	fn_EvalCoord1dv(u);
 }
 
 void WINAPI gl::hk_EvalCoord1f(GLfloat u)
 {
+	logger::print("%s %f\n", __FUNCTION__, u);
 	fn_EvalCoord1f(u);
 }
 
 void WINAPI gl::hk_EvalCoord1fv(const GLfloat* u)
 {
+	logger::print("%s %p\n", __FUNCTION__, u);
 	fn_EvalCoord1fv(u);
 }
 
 void WINAPI gl::hk_EvalCoord2d(GLdouble u, GLdouble v)
 {
+	logger::print("%s %f %f\n", __FUNCTION__, u, v);
 	fn_EvalCoord2d(u, v);
 }
 
 void WINAPI gl::hk_EvalCoord2dv(const GLdouble* u)
 {
+	logger::print("%s %p\n", __FUNCTION__, u);
 	fn_EvalCoord2dv(u);
 }
 
 void WINAPI gl::hk_EvalCoord2f(GLfloat u, GLfloat v)
 {
+	logger::print("%s %f %f\n", __FUNCTION__, u, v);
 	fn_EvalCoord2f(u, v);
 }
 
 void WINAPI gl::hk_EvalCoord2fv(const GLfloat* u)
 {
+	logger::print("%s %p\n", __FUNCTION__, u);
 	fn_EvalCoord2fv(u);
 }
 
 void WINAPI gl::hk_EvalMesh1(GLenum mode, GLint i1, GLint i2)
 {
+	logger::print("%s %u %d %d\n", __FUNCTION__, mode, i1, i2);
 	fn_EvalMesh1(mode, i1, i2);
 }
 
 void WINAPI gl::hk_EvalMesh2(GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2)
 {
+	logger::print("%s %u %d %d %d %d\n", __FUNCTION__, mode, i1, i2, j1, j2);
 	fn_EvalMesh2(mode, i1, i2, j1, j2);
 }
 
 void WINAPI gl::hk_EvalPoint1(GLint i)
 {
+	logger::print("%s %d\n", __FUNCTION__, i);
 	fn_EvalPoint1(i);
 }
 
 void WINAPI gl::hk_EvalPoint2(GLint i, GLint j)
 {
+	logger::print("%s %d %d\n", __FUNCTION__, i, j);
 	fn_EvalPoint2(i, j);
 }
 
 void WINAPI gl::hk_FeedbackBuffer(GLsizei size, GLenum type, GLfloat* buffer)
 {
+	logger::print("%s %d %u %p\n", __FUNCTION__, size, type, buffer);
 	fn_FeedbackBuffer(size, type, buffer);
 }
 
 void WINAPI gl::hk_Finish(void)
 {
+	logger::print("%s\n", __FUNCTION__);
 	fn_Finish();
 }
 
 void WINAPI gl::hk_Flush(void)
 {
+	logger::print("%s\n", __FUNCTION__);
 	fn_Flush();
 }
 
 void WINAPI gl::hk_Fogf(GLenum pname, GLfloat param)
 {
+	logger::print("%s %u %f\n", __FUNCTION__, pname, param);
 	fn_Fogf(pname, param);
 }
 
 void WINAPI gl::hk_Fogfv(GLenum pname, const GLfloat* params)
 {
+	logger::print("%s %u %p\n", __FUNCTION__, pname, params);
 	fn_Fogfv(pname, params);
 }
 
 void WINAPI gl::hk_Fogi(GLenum pname, GLint param)
 {
+	logger::print("%s %u %d\n", __FUNCTION__, pname, param);
 	fn_Fogi(pname, param);
 }
 
 void WINAPI gl::hk_Fogiv(GLenum pname, const GLint* params)
 {
+	logger::print("%s %u %p\n", __FUNCTION__, pname, params);
 	fn_Fogiv(pname, params);
 }
 
 void WINAPI gl::hk_FrontFace(GLenum mode)
 {
+	logger::print("%s %u\n", __FUNCTION__, mode);
 	fn_FrontFace(mode);
 }
 
 void WINAPI gl::hk_Frustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
+	logger::print("%s %f %f %f %f %f %f\n", __FUNCTION__, left, right, bottom, top, zNear, zFar);
 	fn_Frustum(left, right, bottom, top, zNear, zFar);
 }
 
 GLuint WINAPI gl::hk_GenLists(GLsizei range)
 {
+	logger::print("%s %d\n", __FUNCTION__, range);
 	return fn_GenLists(range);
 }
 
 void WINAPI gl::hk_GenTextures(GLsizei n, GLuint* textures)
 {
+	logger::print("%s %d %p\n", __FUNCTION__, n, textures);
 	fn_GenTextures(n, textures);
 }
 
 void WINAPI gl::hk_GetBooleanv(GLenum pname, GLboolean* params)
 {
+	logger::print("%s %u %p\n", __FUNCTION__, pname, params);
 	fn_GetBooleanv(pname, params);
 }
 
 void WINAPI gl::hk_GetClipPlane(GLenum plane, GLdouble* equation)
 {
+	logger::print("%s %u %p\n", __FUNCTION__, plane, equation);
 	fn_GetClipPlane(plane, equation);
 }
 
 void WINAPI gl::hk_GetDoublev(GLenum pname, GLdouble* params)
 {
+	logger::print("%s %u %p\n", __FUNCTION__, pname, params);
 	fn_GetDoublev(pname, params);
 }
 
 GLenum WINAPI gl::hk_GetError(void)
 {
+	logger::print("%s\n", __FUNCTION__);
 	return fn_GetError();
 }
 
 void WINAPI gl::hk_GetFloatv(GLenum pname, GLfloat* params)
 {
+	logger::print("%s %u %p\n", __FUNCTION__, pname, params);
 	fn_GetFloatv(pname, params);
 }
 
 void WINAPI gl::hk_GetIntegerv(GLenum pname, GLint* params)
 {
+	logger::print("%s %u %p\n", __FUNCTION__, pname, params);
 	fn_GetIntegerv(pname, params);
 }
 
 void WINAPI gl::hk_GetLightfv(GLenum light, GLenum pname, GLfloat* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, light, pname, params);
 	fn_GetLightfv(light, pname, params);
 }
 
 void WINAPI gl::hk_GetLightiv(GLenum light, GLenum pname, GLint* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, light, pname, params);
 	fn_GetLightiv(light, pname, params);
 }
 
 void WINAPI gl::hk_GetMapdv(GLenum target, GLenum query, GLdouble* v)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, target, query, v);
 	fn_GetMapdv(target, query, v);
 }
 
 void WINAPI gl::hk_GetMapfv(GLenum target, GLenum query, GLfloat* v)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, target, query, v);
 	fn_GetMapfv(target, query, v);
 }
 
 void WINAPI gl::hk_GetMapiv(GLenum target, GLenum query, GLint* v)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, target, query, v);
 	fn_GetMapiv(target, query, v);
 }
 
 void WINAPI gl::hk_GetMaterialfv(GLenum face, GLenum pname, GLfloat* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, face, pname, params);
 	fn_GetMaterialfv(face, pname, params);
 }
 
 void WINAPI gl::hk_GetMaterialiv(GLenum face, GLenum pname, GLint* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, face, pname, params);
 	fn_GetMaterialiv(face, pname, params);
 }
 
 void WINAPI gl::hk_GetPixelMapfv(GLenum map, GLfloat* values)
 {
+	logger::print("%s %u %p\n", __FUNCTION__, map, values);
 	fn_GetPixelMapfv(map, values);
 }
 
 void WINAPI gl::hk_GetPixelMapuiv(GLenum map, GLuint* values)
 {
+	logger::print("%s %u %p\n", __FUNCTION__, map, values);
 	fn_GetPixelMapuiv(map, values);
 }
 
 void WINAPI gl::hk_GetPixelMapusv(GLenum map, GLushort* values)
 {
+	logger::print("%s %u %p\n", __FUNCTION__, map, values);
 	fn_GetPixelMapusv(map, values);
 }
 
 void WINAPI gl::hk_GetPointerv(GLenum pname, GLvoid** params)
 {
+	logger::print("%s %u %p\n", __FUNCTION__, pname, params);
 	fn_GetPointerv(pname, params);
 }
 
 void WINAPI gl::hk_GetPolygonStipple(GLubyte* mask)
 {
+	logger::print("%s %p\n", __FUNCTION__, mask);
 	fn_GetPolygonStipple(mask);
 }
 
 const GLubyte* WINAPI gl::hk_GetString(GLenum name)
 {
+	logger::print("%s %u\n", __FUNCTION__, name);
 	return fn_GetString(name);
 }
 
 void WINAPI gl::hk_GetTexEnvfv(GLenum target, GLenum pname, GLfloat* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, target, pname, params);
 	fn_GetTexEnvfv(target, pname, params);
 }
 
 void WINAPI gl::hk_GetTexEnviv(GLenum target, GLenum pname, GLint* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, target, pname, params);
 	fn_GetTexEnviv(target, pname, params);
 }
 
 void WINAPI gl::hk_GetTexGendv(GLenum coord, GLenum pname, GLdouble* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, coord, pname, params);
 	fn_GetTexGendv(coord, pname, params);
 }
 
 void WINAPI gl::hk_GetTexGenfv(GLenum coord, GLenum pname, GLfloat* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, coord, pname, params);
 	fn_GetTexGenfv(coord, pname, params);
 }
 
 void WINAPI gl::hk_GetTexGeniv(GLenum coord, GLenum pname, GLint* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, coord, pname, params);
 	fn_GetTexGeniv(coord, pname, params);
 }
 
 void WINAPI gl::hk_GetTexImage(GLenum target, GLint level, GLenum format, GLenum type, GLvoid* pixels)
 {
+	logger::print("%s %u %d %u %u %p\n", __FUNCTION__, target, level, format, type, pixels);
 	fn_GetTexImage(target, level, format, type, pixels);
 }
 
 void WINAPI gl::hk_GetTexLevelParameterfv(GLenum target, GLint level, GLenum pname, GLfloat* params)
 {
+	logger::print("%s %u %d %u %p\n", __FUNCTION__, target, level, pname, params);
 	fn_GetTexLevelParameterfv(target, level, pname, params);
 }
 
 void WINAPI gl::hk_GetTexLevelParameteriv(GLenum target, GLint level, GLenum pname, GLint* params)
 {
+	logger::print("%s %u %d %u %p\n", __FUNCTION__, target, level, pname, params);
 	fn_GetTexLevelParameteriv(target, level, pname, params);
 }
 
 void WINAPI gl::hk_GetTexParameterfv(GLenum target, GLenum pname, GLfloat* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, target, pname, params);
 	fn_GetTexParameterfv(target, pname, params);
 }
 
 void WINAPI gl::hk_GetTexParameteriv(GLenum target, GLenum pname, GLint* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, target, pname, params);
 	fn_GetTexParameteriv(target, pname, params);
 }
 
 void WINAPI gl::hk_Hint(GLenum target, GLenum mode)
 {
+	logger::print("%s %u %u\n", __FUNCTION__, target, mode);
 	fn_Hint(target, mode);
 }
 
 void WINAPI gl::hk_IndexMask(GLuint mask)
 {
+	logger::print("%s %u\n", __FUNCTION__, mask);
 	fn_IndexMask(mask);
 }
 
 void WINAPI gl::hk_IndexPointer(GLenum type, GLsizei stride, const GLvoid* pointer)
 {
+	logger::print("%s %u %d %p\n", __FUNCTION__, type, stride, pointer);
 	fn_IndexPointer(type, stride, pointer);
 }
 
 void WINAPI gl::hk_Indexd(GLdouble c)
 {
+	logger::print("%s %f\n", __FUNCTION__, c);
 	fn_Indexd(c);
 }
 
 void WINAPI gl::hk_Indexdv(const GLdouble* c)
 {
+	logger::print("%s %p\n", __FUNCTION__, c);
 	fn_Indexdv(c);
 }
 
 void WINAPI gl::hk_Indexf(GLfloat c)
 {
+	logger::print("%s %f\n", __FUNCTION__, c);
 	fn_Indexf(c);
 }
 
 void WINAPI gl::hk_Indexfv(const GLfloat* c)
 {
+	logger::print("%s %p\n", __FUNCTION__, c);
 	fn_Indexfv(c);
 }
 
 void WINAPI gl::hk_Indexi(GLint c)
 {
+	logger::print("%s %d\n", __FUNCTION__, c);
 	fn_Indexi(c);
 }
 
 void WINAPI gl::hk_Indexiv(const GLint* c)
 {
+	logger::print("%s %p\n", __FUNCTION__, c);
 	fn_Indexiv(c);
 }
 
 void WINAPI gl::hk_Indexs(GLshort c)
 {
+	logger::print("%s %d\n", __FUNCTION__, c);
 	fn_Indexs(c);
 }
 
 void WINAPI gl::hk_Indexsv(const GLshort* c)
 {
+	logger::print("%s %p\n", __FUNCTION__, c);
 	fn_Indexsv(c);
 }
 
 void WINAPI gl::hk_Indexub(GLubyte c)
 {
+	logger::print("%s %d\n", __FUNCTION__, c);
 	fn_Indexub(c);
 }
 
 void WINAPI gl::hk_Indexubv(const GLubyte* c)
 {
+	logger::print("%s %p\n", __FUNCTION__, c);
 	fn_Indexubv(c);
 }
 
 void WINAPI gl::hk_InitNames(void)
 {
+	logger::print("%s\n", __FUNCTION__);
 	fn_InitNames();
 }
 
 void WINAPI gl::hk_InterleavedArrays(GLenum format, GLsizei stride, const GLvoid* pointer)
 {
+	logger::print("%s %u %d %p\n", __FUNCTION__, format, stride, pointer);
 	fn_InterleavedArrays(format, stride, pointer);
 }
 
 GLboolean WINAPI gl::hk_IsEnabled(GLenum cap)
 {
+	logger::print("%s %u\n", __FUNCTION__, cap);
 	return fn_IsEnabled(cap);
 }
 
 GLboolean WINAPI gl::hk_IsList(GLuint list)
 {
+	logger::print("%s %u\n", __FUNCTION__, list);
 	return fn_IsList(list);
 }
 
 GLboolean WINAPI gl::hk_IsTexture(GLuint texture)
 {
+	logger::print("%s %u\n", __FUNCTION__, texture);
 	return fn_IsTexture(texture);
 }
 
 void WINAPI gl::hk_LightModelf(GLenum pname, GLfloat param)
 {
+	logger::print("%s %u %f\n", __FUNCTION__, pname, param);
 	fn_LightModelf(pname, param);
 }
 
 void WINAPI gl::hk_LightModelfv(GLenum pname, const GLfloat* params)
 {
+	logger::print("%s %u %p\n", __FUNCTION__, pname, params);
 	fn_LightModelfv(pname, params);
 }
 
 void WINAPI gl::hk_LightModeli(GLenum pname, GLint param)
 {
+	logger::print("%s %u %d\n", __FUNCTION__, pname, param);
 	fn_LightModeli(pname, param);
 }
 
 void WINAPI gl::hk_LightModeliv(GLenum pname, const GLint* params)
 {
+	logger::print("%s %u %p\n", __FUNCTION__, pname, params);
 	fn_LightModeliv(pname, params);
 }
 
 void WINAPI gl::hk_Lightf(GLenum light, GLenum pname, GLfloat param)
 {
+	logger::print("%s %u %u %f\n", __FUNCTION__, light, pname, param);
 	fn_Lightf(light, pname, param);
 }
 
 void WINAPI gl::hk_Lightfv(GLenum light, GLenum pname, const GLfloat* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, light, pname, params);
 	fn_Lightfv(light, pname, params);
 }
 
 void WINAPI gl::hk_Lighti(GLenum light, GLenum pname, GLint param)
 {
+	logger::print("%s %u %u %d\n", __FUNCTION__, light, pname, param);
 	fn_Lighti(light, pname, param);
 }
 
 void WINAPI gl::hk_Lightiv(GLenum light, GLenum pname, const GLint* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, light, pname, params);
 	fn_Lightiv(light, pname, params);
 }
 
 void WINAPI gl::hk_LineStipple(GLint factor, GLushort pattern)
 {
+	logger::print("%s %d %d\n", __FUNCTION__, factor, pattern);
 	fn_LineStipple(factor, pattern);
 }
 
 void WINAPI gl::hk_LineWidth(GLfloat width)
 {
+	logger::print("%s %f\n", __FUNCTION__, width);
 	fn_LineWidth(width);
 }
 
 void WINAPI gl::hk_ListBase(GLuint base)
 {
+	logger::print("%s %u\n", __FUNCTION__, base);
 	fn_ListBase(base);
 }
 
 void WINAPI gl::hk_LoadIdentity(void)
 {
+	logger::print("%s\n", __FUNCTION__);
 	fn_LoadIdentity();
 }
 
 void WINAPI gl::hk_LoadMatrixd(const GLdouble* m)
 {
+	logger::print("%s %p\n", __FUNCTION__, m);
 	fn_LoadMatrixd(m);
 }
 
 void WINAPI gl::hk_LoadMatrixf(const GLfloat* m)
 {
+	logger::print("%s %p\n", __FUNCTION__, m);
 	fn_LoadMatrixf(m);
 }
 
 void WINAPI gl::hk_LoadName(GLuint name)
 {
+	logger::print("%s %u\n", __FUNCTION__, name);
 	fn_LoadName(name);
 }
 
 void WINAPI gl::hk_LogicOp(GLenum opcode)
 {
+	logger::print("%s %u\n", __FUNCTION__, opcode);
 	fn_LogicOp(opcode);
 }
 
 void WINAPI gl::hk_Map1d(GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble* points)
 {
+	logger::print("%s %u %f %f %d %d %p\n", __FUNCTION__, target, u1, u2, stride, order, points);
 	fn_Map1d(target, u1, u2, stride, order, points);
 }
 
 void WINAPI gl::hk_Map1f(GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat* points)
 {
+	logger::print("%s %u %f %f %d %d %p\n", __FUNCTION__, target, u1, u2, stride, order, points);
 	fn_Map1f(target, u1, u2, stride, order, points);
 }
 
 void WINAPI gl::hk_Map2d(GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble* points)
 {
+	logger::print("%s %u %f %f %d %d %f %f %d %d %p\n", __FUNCTION__, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 	fn_Map2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 }
 
 void WINAPI gl::hk_Map2f(GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat* points)
 {
+	logger::print("%s %u %f %f %d %d %f %f %d %d %p\n", __FUNCTION__, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 	fn_Map2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 }
 
 void WINAPI gl::hk_MapGrid1d(GLint un, GLdouble u1, GLdouble u2)
 {
+	logger::print("%s %d %f %f\n", __FUNCTION__, un, u1, u2);
 	fn_MapGrid1d(un, u1, u2);
 }
 
 void WINAPI gl::hk_MapGrid1f(GLint un, GLfloat u1, GLfloat u2)
 {
+	logger::print("%s %d %f %f\n", __FUNCTION__, un, u1, u2);
 	fn_MapGrid1f(un, u1, u2);
 }
 
 void WINAPI gl::hk_MapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2)
 {
+	logger::print("%s %d %f %f %d %f %f\n", __FUNCTION__, un, u1, u2, vn, v1, v2);
 	fn_MapGrid2d(un, u1, u2, vn, v1, v2);
 }
 
 void WINAPI gl::hk_MapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2)
 {
+	logger::print("%s %d %f %f %d %f %f\n", __FUNCTION__, un, u1, u2, vn, v1, v2);
 	fn_MapGrid2f(un, u1, u2, vn, v1, v2);
 }
 
 void WINAPI gl::hk_Materialf(GLenum face, GLenum pname, GLfloat param)
 {
+	logger::print("%s %u %u %f\n", __FUNCTION__, face, pname, param);
 	fn_Materialf(face, pname, param);
 }
 
 void WINAPI gl::hk_Materialfv(GLenum face, GLenum pname, const GLfloat* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, face, pname, params);
 	fn_Materialfv(face, pname, params);
 }
 
 void WINAPI gl::hk_Materiali(GLenum face, GLenum pname, GLint param)
 {
+	logger::print("%s %u %u %d\n", __FUNCTION__, face, pname, param);
 	fn_Materiali(face, pname, param);
 }
 
 void WINAPI gl::hk_Materialiv(GLenum face, GLenum pname, const GLint* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, face, pname, params);
 	fn_Materialiv(face, pname, params);
 }
 
 void WINAPI gl::hk_MatrixMode(GLenum mode)
 {
+	logger::print("%s %u\n", __FUNCTION__, mode);
 	fn_MatrixMode(mode);
 }
 
 void WINAPI gl::hk_MultMatrixd(const GLdouble* m)
 {
+	logger::print("%s %p\n", __FUNCTION__, m);
 	fn_MultMatrixd(m);
 }
 
 void WINAPI gl::hk_MultMatrixf(const GLfloat* m)
 {
+	logger::print("%s %p\n", __FUNCTION__, m);
 	fn_MultMatrixf(m);
 }
 
 void WINAPI gl::hk_NewList(GLuint list, GLenum mode)
 {
+	logger::print("%s %u %u\n", __FUNCTION__, list, mode);
 	fn_NewList(list, mode);
 }
 
 void WINAPI gl::hk_Normal3b(GLbyte nx, GLbyte ny, GLbyte nz)
 {
+	logger::print("%s %d %d %d\n", __FUNCTION__, nx, ny, nz);
 	fn_Normal3b(nx, ny, nz);
 }
 
 void WINAPI gl::hk_Normal3bv(const GLbyte* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Normal3bv(v);
 }
 
 void WINAPI gl::hk_Normal3d(GLdouble nx, GLdouble ny, GLdouble nz)
 {
+	logger::print("%s %f %f %f\n", __FUNCTION__, nx, ny, nz);
 	fn_Normal3d(nx, ny, nz);
 }
 
 void WINAPI gl::hk_Normal3dv(const GLdouble* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Normal3dv(v);
 }
 
 void WINAPI gl::hk_Normal3f(GLfloat nx, GLfloat ny, GLfloat nz)
 {
+	logger::print("%s %f %f %f\n", __FUNCTION__, nx, ny, nz);
 	fn_Normal3f(nx, ny, nz);
 }
 
 void WINAPI gl::hk_Normal3fv(const GLfloat* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Normal3fv(v);
 }
 
 void WINAPI gl::hk_Normal3i(GLint nx, GLint ny, GLint nz)
 {
+	logger::print("%s %d %d %d\n", __FUNCTION__, nx, ny, nz);
 	fn_Normal3i(nx, ny, nz);
 }
 
 void WINAPI gl::hk_Normal3iv(const GLint* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Normal3iv(v);
 }
 
 void WINAPI gl::hk_Normal3s(GLshort nx, GLshort ny, GLshort nz)
 {
+	logger::print("%s %d %d %d\n", __FUNCTION__, nx, ny, nz);
 	fn_Normal3s(nx, ny, nz);
 }
 
 void WINAPI gl::hk_Normal3sv(const GLshort* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Normal3sv(v);
 }
 
 void WINAPI gl::hk_NormalPointer(GLenum type, GLsizei stride, const GLvoid* pointer)
 {
+	logger::print("%s %u %d %p\n", __FUNCTION__, type, stride, pointer);
 	fn_NormalPointer(type, stride, pointer);
 }
 
 void WINAPI gl::hk_Ortho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
+	logger::print("%s %f %f %f %f %f %f\n", __FUNCTION__, left, right, bottom, top, zNear, zFar);
 	fn_Ortho(left, right, bottom, top, zNear, zFar);
 }
 
 void WINAPI gl::hk_PassThrough(GLfloat token)
 {
+	logger::print("%s %f\n", __FUNCTION__, token);
 	fn_PassThrough(token);
 }
 
 void WINAPI gl::hk_PixelMapfv(GLenum map, GLsizei mapsize, const GLfloat* values)
 {
+	logger::print("%s %u %d %p\n", __FUNCTION__, map, mapsize, values);
 	fn_PixelMapfv(map, mapsize, values);
 }
 
 void WINAPI gl::hk_PixelMapuiv(GLenum map, GLsizei mapsize, const GLuint* values)
 {
+	logger::print("%s %u %d %p\n", __FUNCTION__, map, mapsize, values);
 	fn_PixelMapuiv(map, mapsize, values);
 }
 
 void WINAPI gl::hk_PixelMapusv(GLenum map, GLsizei mapsize, const GLushort* values)
 {
+	logger::print("%s %u %d %p\n", __FUNCTION__, map, mapsize, values);
 	fn_PixelMapusv(map, mapsize, values);
 }
 
 void WINAPI gl::hk_PixelStoref(GLenum pname, GLfloat param)
 {
+	logger::print("%s %u %f\n", __FUNCTION__, pname, param);
 	fn_PixelStoref(pname, param);
 }
 
 void WINAPI gl::hk_PixelStorei(GLenum pname, GLint param)
 {
+	logger::print("%s %u %d\n", __FUNCTION__, pname, param);
 	fn_PixelStorei(pname, param);
 }
 
 void WINAPI gl::hk_PixelTransferf(GLenum pname, GLfloat param)
 {
+	logger::print("%s %u %f\n", __FUNCTION__, pname, param);
 	fn_PixelTransferf(pname, param);
 }
 
 void WINAPI gl::hk_PixelTransferi(GLenum pname, GLint param)
 {
+	logger::print("%s %u %d\n", __FUNCTION__, pname, param);
 	fn_PixelTransferi(pname, param);
 }
 
 void WINAPI gl::hk_PixelZoom(GLfloat xfactor, GLfloat yfactor)
 {
+	logger::print("%s %f %f\n", __FUNCTION__, xfactor, yfactor);
 	fn_PixelZoom(xfactor, yfactor);
 }
 
 void WINAPI gl::hk_PointSize(GLfloat size)
 {
+	logger::print("%s %f\n", __FUNCTION__, size);
 	fn_PointSize(size);
 }
 
 void WINAPI gl::hk_PolygonMode(GLenum face, GLenum mode)
 {
+	logger::print("%s %u %u\n", __FUNCTION__, face, mode);
 	fn_PolygonMode(face, mode);
 }
 
 void WINAPI gl::hk_PolygonOffset(GLfloat factor, GLfloat units)
 {
+	logger::print("%s %f %f\n", __FUNCTION__, factor, units);
 	fn_PolygonOffset(factor, units);
 }
 
 void WINAPI gl::hk_PolygonStipple(const GLubyte* mask)
 {
+	logger::print("%s %p\n", __FUNCTION__, mask);
 	fn_PolygonStipple(mask);
 }
 
 void WINAPI gl::hk_PopAttrib(void)
 {
+	logger::print("%s\n", __FUNCTION__);
 	fn_PopAttrib();
 }
 
 void WINAPI gl::hk_PopClientAttrib(void)
 {
+	logger::print("%s\n", __FUNCTION__);
 	fn_PopClientAttrib();
 }
 
 void WINAPI gl::hk_PopMatrix(void)
 {
+	logger::print("%s\n", __FUNCTION__);
 	fn_PopMatrix();
 }
 
 void WINAPI gl::hk_PopName(void)
 {
+	logger::print("%s\n", __FUNCTION__);
 	fn_PopName();
 }
 
 void WINAPI gl::hk_PrioritizeTextures(GLsizei n, const GLuint* textures, const GLclampf* priorities)
 {
+	logger::print("%s %d %p %p\n", __FUNCTION__, n, textures, priorities);
 	fn_PrioritizeTextures(n, textures, priorities);
 }
 
 void WINAPI gl::hk_PushAttrib(GLbitfield mask)
 {
+	logger::print("%s %d\n", __FUNCTION__, mask);
 	fn_PushAttrib(mask);
 }
 
 void WINAPI gl::hk_PushClientAttrib(GLbitfield mask)
 {
+	logger::print("%s %d\n", __FUNCTION__, mask);
 	fn_PushClientAttrib(mask);
 }
 
 void WINAPI gl::hk_PushMatrix(void)
 {
+	logger::print("%s\n", __FUNCTION__);
 	fn_PushMatrix();
 }
 
 void WINAPI gl::hk_PushName(GLuint name)
 {
+	logger::print("%s %u\n", __FUNCTION__, name);
 	fn_PushName(name);
 }
 
 void WINAPI gl::hk_RasterPos2d(GLdouble x, GLdouble y)
 {
+	logger::print("%s %f %f\n", __FUNCTION__, x, y);
 	fn_RasterPos2d(x, y);
 }
 
 void WINAPI gl::hk_RasterPos2dv(const GLdouble* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_RasterPos2dv(v);
 }
 
 void WINAPI gl::hk_RasterPos2f(GLfloat x, GLfloat y)
 {
+	logger::print("%s %f %f\n", __FUNCTION__, x, y);
 	fn_RasterPos2f(x, y);
 }
 
 void WINAPI gl::hk_RasterPos2fv(const GLfloat* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_RasterPos2fv(v);
 }
 
 void WINAPI gl::hk_RasterPos2i(GLint x, GLint y)
 {
+	logger::print("%s %d %d\n", __FUNCTION__, x, y);
 	fn_RasterPos2i(x, y);
 }
 
 void WINAPI gl::hk_RasterPos2iv(const GLint* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_RasterPos2iv(v);
 }
 
 void WINAPI gl::hk_RasterPos2s(GLshort x, GLshort y)
 {
+	logger::print("%s %d %d\n", __FUNCTION__, x, y);
 	fn_RasterPos2s(x, y);
 }
 
 void WINAPI gl::hk_RasterPos2sv(const GLshort* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_RasterPos2sv(v);
 }
 
 void WINAPI gl::hk_RasterPos3d(GLdouble x, GLdouble y, GLdouble z)
 {
+	logger::print("%s %f %f %f\n", __FUNCTION__, x, y, z);
 	fn_RasterPos3d(x, y, z);
 }
 
 void WINAPI gl::hk_RasterPos3dv(const GLdouble* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_RasterPos3dv(v);
 }
 
 void WINAPI gl::hk_RasterPos3f(GLfloat x, GLfloat y, GLfloat z)
 {
+	logger::print("%s %f %f %f\n", __FUNCTION__, x, y, z);
 	fn_RasterPos3f(x, y, z);
 }
 
 void WINAPI gl::hk_RasterPos3fv(const GLfloat* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_RasterPos3fv(v);
 }
 
 void WINAPI gl::hk_RasterPos3i(GLint x, GLint y, GLint z)
 {
+	logger::print("%s %d %d %d\n", __FUNCTION__, x, y, z);
 	fn_RasterPos3i(x, y, z);
 }
 
 void WINAPI gl::hk_RasterPos3iv(const GLint* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_RasterPos3iv(v);
 }
 
 void WINAPI gl::hk_RasterPos3s(GLshort x, GLshort y, GLshort z)
 {
+	logger::print("%s %d %d %d\n", __FUNCTION__, x, y, z);
 	fn_RasterPos3s(x, y, z);
 }
 
 void WINAPI gl::hk_RasterPos3sv(const GLshort* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_RasterPos3sv(v);
 }
 
 void WINAPI gl::hk_RasterPos4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
+	logger::print("%s %f %f %f %f\n", __FUNCTION__, x, y, z, w);
 	fn_RasterPos4d(x, y, z, w);
 }
 
 void WINAPI gl::hk_RasterPos4dv(const GLdouble* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_RasterPos4dv(v);
 }
 
 void WINAPI gl::hk_RasterPos4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
+	logger::print("%s %f %f %f %f\n", __FUNCTION__, x, y, z, w);
 	fn_RasterPos4f(x, y, z, w);
 }
 
 void WINAPI gl::hk_RasterPos4fv(const GLfloat* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_RasterPos4fv(v);
 }
 
 void WINAPI gl::hk_RasterPos4i(GLint x, GLint y, GLint z, GLint w)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, x, y, z, w);
 	fn_RasterPos4i(x, y, z, w);
 }
 
 void WINAPI gl::hk_RasterPos4iv(const GLint* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_RasterPos4iv(v);
 }
 
 void WINAPI gl::hk_RasterPos4s(GLshort x, GLshort y, GLshort z, GLshort w)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, x, y, z, w);
 	fn_RasterPos4s(x, y, z, w);
 }
 
 void WINAPI gl::hk_RasterPos4sv(const GLshort* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_RasterPos4sv(v);
 }
 
 void WINAPI gl::hk_ReadBuffer(GLenum mode)
 {
+	logger::print("%s %u\n", __FUNCTION__, mode);
 	fn_ReadBuffer(mode);
 }
 
 void WINAPI gl::hk_ReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid* pixels)
 {
+	logger::print("%s %d %d %d %d %u %u %p\n", __FUNCTION__, x, y, width, height, format, type, pixels);
 	fn_ReadPixels(x, y, width, height, format, type, pixels);
 }
 
 void WINAPI gl::hk_Rectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
 {
+	logger::print("%s %f %f %f %f\n", __FUNCTION__, x1, y1, x2, y2);
 	fn_Rectd(x1, y1, x2, y2);
 }
 
 void WINAPI gl::hk_Rectdv(const GLdouble* v1, const GLdouble* v2)
 {
+	logger::print("%s %p %p\n", __FUNCTION__, v1, v2);
 	fn_Rectdv(v1, v2);
 }
 
 void WINAPI gl::hk_Rectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
 {
+	logger::print("%s %f %f %f %f\n", __FUNCTION__, x1, y1, x2, y2);
 	fn_Rectf(x1, y1, x2, y2);
 }
 
 void WINAPI gl::hk_Rectfv(const GLfloat* v1, const GLfloat* v2)
 {
+	logger::print("%s %p %p\n", __FUNCTION__, v1, v2);
 	fn_Rectfv(v1, v2);
 }
 
 void WINAPI gl::hk_Recti(GLint x1, GLint y1, GLint x2, GLint y2)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, x1, y1, x2, y2);
 	fn_Recti(x1, y1, x2, y2);
 }
 
 void WINAPI gl::hk_Rectiv(const GLint* v1, const GLint* v2)
 {
+	logger::print("%s %p %p\n", __FUNCTION__, v1, v2);
 	fn_Rectiv(v1, v2);
 }
 
 void WINAPI gl::hk_Rects(GLshort x1, GLshort y1, GLshort x2, GLshort y2)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, x1, y1, x2, y2);
 	fn_Rects(x1, y1, x2, y2);
 }
 
 void WINAPI gl::hk_Rectsv(const GLshort* v1, const GLshort* v2)
 {
+	logger::print("%s %p %p\n", __FUNCTION__, v1, v2);
 	fn_Rectsv(v1, v2);
 }
 
 GLint WINAPI gl::hk_RenderMode(GLenum mode)
 {
+	logger::print("%s %u\n", __FUNCTION__, mode);
 	return fn_RenderMode(mode);
 }
 
 void WINAPI gl::hk_Rotated(GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
 {
+	logger::print("%s %f %f %f %f\n", __FUNCTION__, angle, x, y, z);
 	fn_Rotated(angle, x, y, z);
 }
 
 void WINAPI gl::hk_Rotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
+	logger::print("%s %f %f %f %f\n", __FUNCTION__, angle, x, y, z);
 	fn_Rotatef(angle, x, y, z);
 }
 
 void WINAPI gl::hk_Scaled(GLdouble x, GLdouble y, GLdouble z)
 {
+	logger::print("%s %f %f %f\n", __FUNCTION__, x, y, z);
 	fn_Scaled(x, y, z);
 }
 
 void WINAPI gl::hk_Scalef(GLfloat x, GLfloat y, GLfloat z)
 {
+	logger::print("%s %f %f %f\n", __FUNCTION__, x, y, z);
 	fn_Scalef(x, y, z);
 }
 
 void WINAPI gl::hk_Scissor(GLint x, GLint y, GLsizei width, GLsizei height)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, x, y, width, height);
 	fn_Scissor(x, y, width, height);
 }
 
 void WINAPI gl::hk_SelectBuffer(GLsizei size, GLuint* buffer)
 {
+	logger::print("%s %d %p\n", __FUNCTION__, size, buffer);
 	fn_SelectBuffer(size, buffer);
 }
 
 void WINAPI gl::hk_ShadeModel(GLenum mode)
 {
+	logger::print("%s %u\n", __FUNCTION__, mode);
 	fn_ShadeModel(mode);
 }
 
 void WINAPI gl::hk_StencilFunc(GLenum func, GLint ref, GLuint mask)
 {
+	logger::print("%s %u %d %u\n", __FUNCTION__, func, ref, mask);
 	fn_StencilFunc(func, ref, mask);
 }
 
 void WINAPI gl::hk_StencilMask(GLuint mask)
 {
+	logger::print("%s %u\n", __FUNCTION__, mask);
 	fn_StencilMask(mask);
 }
 
 void WINAPI gl::hk_StencilOp(GLenum fail, GLenum zfail, GLenum zpass)
 {
+	logger::print("%s %u %u %u\n", __FUNCTION__, fail, zfail, zpass);
 	fn_StencilOp(fail, zfail, zpass);
 }
 
 void WINAPI gl::hk_TexCoord1d(GLdouble s)
 {
+	logger::print("%s %f\n", __FUNCTION__, s);
 	fn_TexCoord1d(s);
 }
 
 void WINAPI gl::hk_TexCoord1dv(const GLdouble* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord1dv(v);
 }
 
 void WINAPI gl::hk_TexCoord1f(GLfloat s)
 {
+	logger::print("%s %f\n", __FUNCTION__, s);
 	fn_TexCoord1f(s);
 }
 
 void WINAPI gl::hk_TexCoord1fv(const GLfloat* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord1fv(v);
 }
 
 void WINAPI gl::hk_TexCoord1i(GLint s)
 {
+	logger::print("%s %d\n", __FUNCTION__, s);
 	fn_TexCoord1i(s);
 }
 
 void WINAPI gl::hk_TexCoord1iv(const GLint* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord1iv(v);
 }
 
 void WINAPI gl::hk_TexCoord1s(GLshort s)
 {
+	logger::print("%s %d\n", __FUNCTION__, s);
 	fn_TexCoord1s(s);
 }
 
 void WINAPI gl::hk_TexCoord1sv(const GLshort* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord1sv(v);
 }
 
 void WINAPI gl::hk_TexCoord2d(GLdouble s, GLdouble t)
 {
+	logger::print("%s %f %f\n", __FUNCTION__, s, t);
 	fn_TexCoord2d(s, t);
 }
 
 void WINAPI gl::hk_TexCoord2dv(const GLdouble* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord2dv(v);
 }
 
 void WINAPI gl::hk_TexCoord2f(GLfloat s, GLfloat t)
 {
+	logger::print("%s %f %f\n", __FUNCTION__, s, t);
 	fn_TexCoord2f(s, t);
 }
 
 void WINAPI gl::hk_TexCoord2fv(const GLfloat* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord2fv(v);
 }
 
 void WINAPI gl::hk_TexCoord2i(GLint s, GLint t)
 {
+	logger::print("%s %d %d\n", __FUNCTION__, s, t);
 	fn_TexCoord2i(s, t);
 }
 
 void WINAPI gl::hk_TexCoord2iv(const GLint* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord2iv(v);
 }
 
 void WINAPI gl::hk_TexCoord2s(GLshort s, GLshort t)
 {
+	logger::print("%s %d %d\n", __FUNCTION__, s, t);
 	fn_TexCoord2s(s, t);
 }
 
 void WINAPI gl::hk_TexCoord2sv(const GLshort* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord2sv(v);
 }
 
 void WINAPI gl::hk_TexCoord3d(GLdouble s, GLdouble t, GLdouble r)
 {
+	logger::print("%s %f %f %f\n", __FUNCTION__, s, t, r);
 	fn_TexCoord3d(s, t, r);
 }
 
 void WINAPI gl::hk_TexCoord3dv(const GLdouble* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord3dv(v);
 }
 
 void WINAPI gl::hk_TexCoord3f(GLfloat s, GLfloat t, GLfloat r)
 {
+	logger::print("%s %f %f %f\n", __FUNCTION__, s, t, r);
 	fn_TexCoord3f(s, t, r);
 }
 
 void WINAPI gl::hk_TexCoord3fv(const GLfloat* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord3fv(v);
 }
 
 void WINAPI gl::hk_TexCoord3i(GLint s, GLint t, GLint r)
 {
+	logger::print("%s %d %d %d\n", __FUNCTION__, s, t, r);
 	fn_TexCoord3i(s, t, r);
 }
 
 void WINAPI gl::hk_TexCoord3iv(const GLint* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord3iv(v);
 }
 
 void WINAPI gl::hk_TexCoord3s(GLshort s, GLshort t, GLshort r)
 {
+	logger::print("%s %d %d %d\n", __FUNCTION__, s, t, r);
 	fn_TexCoord3s(s, t, r);
 }
 
 void WINAPI gl::hk_TexCoord3sv(const GLshort* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord3sv(v);
 }
 
 void WINAPI gl::hk_TexCoord4d(GLdouble s, GLdouble t, GLdouble r, GLdouble q)
 {
+	logger::print("%s %f %f %f %f\n", __FUNCTION__, s, t, r, q);
 	fn_TexCoord4d(s, t, r, q);
 }
 
 void WINAPI gl::hk_TexCoord4dv(const GLdouble* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord4dv(v);
 }
 
 void WINAPI gl::hk_TexCoord4f(GLfloat s, GLfloat t, GLfloat r, GLfloat q)
 {
+	logger::print("%s %f %f %f %f\n", __FUNCTION__, s, t, r, q);
 	fn_TexCoord4f(s, t, r, q);
 }
 
 void WINAPI gl::hk_TexCoord4fv(const GLfloat* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord4fv(v);
 }
 
 void WINAPI gl::hk_TexCoord4i(GLint s, GLint t, GLint r, GLint q)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, s, t, r, q);
 	fn_TexCoord4i(s, t, r, q);
 }
 
 void WINAPI gl::hk_TexCoord4iv(const GLint* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord4iv(v);
 }
 
 void WINAPI gl::hk_TexCoord4s(GLshort s, GLshort t, GLshort r, GLshort q)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, s, t, r, q);
 	fn_TexCoord4s(s, t, r, q);
 }
 
 void WINAPI gl::hk_TexCoord4sv(const GLshort* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_TexCoord4sv(v);
 }
 
 void WINAPI gl::hk_TexCoordPointer(GLint size, GLenum type, GLsizei stride, const GLvoid* pointer)
 {
+	logger::print("%s %d %u %d %p\n", __FUNCTION__, size, type, stride, pointer);
 	fn_TexCoordPointer(size, type, stride, pointer);
 }
 
 void WINAPI gl::hk_TexEnvf(GLenum target, GLenum pname, GLfloat param)
 {
+	logger::print("%s %u %u %f\n", __FUNCTION__, target, pname, param);
 	fn_TexEnvf(target, pname, param);
 }
 
 void WINAPI gl::hk_TexEnvfv(GLenum target, GLenum pname, const GLfloat* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, target, pname, params);
 	fn_TexEnvfv(target, pname, params);
 }
 
 void WINAPI gl::hk_TexEnvi(GLenum target, GLenum pname, GLint param)
 {
+	logger::print("%s %u %u %d\n", __FUNCTION__, target, pname, param);
 	fn_TexEnvi(target, pname, param);
 }
 
 void WINAPI gl::hk_TexEnviv(GLenum target, GLenum pname, const GLint* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, target, pname, params);
 	fn_TexEnviv(target, pname, params);
 }
 
 void WINAPI gl::hk_TexGend(GLenum coord, GLenum pname, GLdouble param)
 {
+	logger::print("%s %u %u %f\n", __FUNCTION__, coord, pname, param);
 	fn_TexGend(coord, pname, param);
 }
 
 void WINAPI gl::hk_TexGendv(GLenum coord, GLenum pname, const GLdouble* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, coord, pname, params);
 	fn_TexGendv(coord, pname, params);
 }
 
 void WINAPI gl::hk_TexGenf(GLenum coord, GLenum pname, GLfloat param)
 {
+	logger::print("%s %u %u %f\n", __FUNCTION__, coord, pname, param);
 	fn_TexGenf(coord, pname, param);
 }
 
 void WINAPI gl::hk_TexGenfv(GLenum coord, GLenum pname, const GLfloat* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, coord, pname, params);
 	fn_TexGenfv(coord, pname, params);
 }
 
 void WINAPI gl::hk_TexGeni(GLenum coord, GLenum pname, GLint param)
 {
+	logger::print("%s %u %u %d\n", __FUNCTION__, coord, pname, param);
 	fn_TexGeni(coord, pname, param);
 }
 
 void WINAPI gl::hk_TexGeniv(GLenum coord, GLenum pname, const GLint* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, coord, pname, params);
 	fn_TexGeniv(coord, pname, params);
 }
 
 void WINAPI gl::hk_TexImage1D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid* pixels)
 {
+	logger::print("%s %u %d %d %d %d %u %u %p\n", __FUNCTION__, target, level, internalformat, width, border, format, type, pixels);
 	fn_TexImage1D(target, level, internalformat, width, border, format, type, pixels);
 }
 
 void WINAPI gl::hk_TexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid* pixels)
 {
+	logger::print("%s %u %d %d %d %d %d %u %u %p\n", __FUNCTION__, target, level, internalformat, width, height, border, format, type, pixels);
 	fn_TexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
 }
 
 void WINAPI gl::hk_TexParameterf(GLenum target, GLenum pname, GLfloat param)
 {
+	logger::print("%s %u %u %f\n", __FUNCTION__, target, pname, param);
 	fn_TexParameterf(target, pname, param);
 }
 
 void WINAPI gl::hk_TexParameterfv(GLenum target, GLenum pname, const GLfloat* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, target, pname, params);
 	fn_TexParameterfv(target, pname, params);
 }
 
 void WINAPI gl::hk_TexParameteri(GLenum target, GLenum pname, GLint param)
 {
+	logger::print("%s %u %u %d\n", __FUNCTION__, target, pname, param);
 	fn_TexParameteri(target, pname, param);
 }
 
 void WINAPI gl::hk_TexParameteriv(GLenum target, GLenum pname, const GLint* params)
 {
+	logger::print("%s %u %u %p\n", __FUNCTION__, target, pname, params);
 	fn_TexParameteriv(target, pname, params);
 }
 
 void WINAPI gl::hk_TexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid* pixels)
 {
+	logger::print("%s %u %d %d %d %u %u %p\n", __FUNCTION__, target, level, xoffset, width, format, type, pixels);
 	fn_TexSubImage1D(target, level, xoffset, width, format, type, pixels);
 }
 
 void WINAPI gl::hk_TexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid* pixels)
 {
+	logger::print("%s %u %d %d %d %d %d %u %u %p\n", __FUNCTION__, target, level, xoffset, yoffset, width, height, format, type, pixels);
 	fn_TexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
 }
 
 void WINAPI gl::hk_Translated(GLdouble x, GLdouble y, GLdouble z)
 {
+	logger::print("%s %f %f %f\n", __FUNCTION__, x, y, z);
 	fn_Translated(x, y, z);
 }
 
 void WINAPI gl::hk_Translatef(GLfloat x, GLfloat y, GLfloat z)
 {
+	logger::print("%s %f %f %f\n", __FUNCTION__, x, y, z);
 	fn_Translatef(x, y, z);
 }
 
 void WINAPI gl::hk_Vertex2d(GLdouble x, GLdouble y)
 {
+	logger::print("%s %f %f\n", __FUNCTION__, x, y);
 	fn_Vertex2d(x, y);
 }
 
 void WINAPI gl::hk_Vertex2dv(const GLdouble* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Vertex2dv(v);
 }
 
 void WINAPI gl::hk_Vertex2f(GLfloat x, GLfloat y)
 {
+	logger::print("%s %f %f\n", __FUNCTION__, x, y);
 	fn_Vertex2f(x, y);
 }
 
 void WINAPI gl::hk_Vertex2fv(const GLfloat* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Vertex2fv(v);
 }
 
 void WINAPI gl::hk_Vertex2i(GLint x, GLint y)
 {
+	logger::print("%s %d %d\n", __FUNCTION__, x, y);
 	fn_Vertex2i(x, y);
 }
 
 void WINAPI gl::hk_Vertex2iv(const GLint* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Vertex2iv(v);
 }
 
 void WINAPI gl::hk_Vertex2s(GLshort x, GLshort y)
 {
+	logger::print("%s %d %d\n", __FUNCTION__, x, y);
 	fn_Vertex2s(x, y);
 }
 
 void WINAPI gl::hk_Vertex2sv(const GLshort* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Vertex2sv(v);
 }
 
 void WINAPI gl::hk_Vertex3d(GLdouble x, GLdouble y, GLdouble z)
 {
+	logger::print("%s %f %f %f\n", __FUNCTION__, x, y, z);
 	fn_Vertex3d(x, y, z);
 }
 
 void WINAPI gl::hk_Vertex3dv(const GLdouble* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Vertex3dv(v);
 }
 
 void WINAPI gl::hk_Vertex3f(GLfloat x, GLfloat y, GLfloat z)
 {
+	logger::print("%s %f %f %f\n", __FUNCTION__, x, y, z);
 	fn_Vertex3f(x, y, z);
 }
 
 void WINAPI gl::hk_Vertex3fv(const GLfloat* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Vertex3fv(v);
 }
 
 void WINAPI gl::hk_Vertex3i(GLint x, GLint y, GLint z)
 {
+	logger::print("%s %d %d %d\n", __FUNCTION__, x, y, z);
 	fn_Vertex3i(x, y, z);
 }
 
 void WINAPI gl::hk_Vertex3iv(const GLint* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Vertex3iv(v);
 }
 
 void WINAPI gl::hk_Vertex3s(GLshort x, GLshort y, GLshort z)
 {
+	logger::print("%s %d %d %d\n", __FUNCTION__, x, y, z);
 	fn_Vertex3s(x, y, z);
 }
 
 void WINAPI gl::hk_Vertex3sv(const GLshort* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Vertex3sv(v);
 }
 
 void WINAPI gl::hk_Vertex4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
+	logger::print("%s %f %f %f %f\n", __FUNCTION__, x, y, z, w);
 	fn_Vertex4d(x, y, z, w);
 }
 
 void WINAPI gl::hk_Vertex4dv(const GLdouble* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Vertex4dv(v);
 }
 
 void WINAPI gl::hk_Vertex4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
+	logger::print("%s %f %f %f %f\n", __FUNCTION__, x, y, z, w);
 	fn_Vertex4f(x, y, z, w);
 }
 
 void WINAPI gl::hk_Vertex4fv(const GLfloat* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Vertex4fv(v);
 }
 
 void WINAPI gl::hk_Vertex4i(GLint x, GLint y, GLint z, GLint w)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, x, y, z, w);
 	fn_Vertex4i(x, y, z, w);
 }
 
 void WINAPI gl::hk_Vertex4iv(const GLint* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Vertex4iv(v);
 }
 
 void WINAPI gl::hk_Vertex4s(GLshort x, GLshort y, GLshort z, GLshort w)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, x, y, z, w);
 	fn_Vertex4s(x, y, z, w);
 }
 
 void WINAPI gl::hk_Vertex4sv(const GLshort* v)
 {
+	logger::print("%s %p\n", __FUNCTION__, v);
 	fn_Vertex4sv(v);
 }
 
 void WINAPI gl::hk_VertexPointer(GLint size, GLenum type, GLsizei stride, const GLvoid* pointer)
 {
+	logger::print("%s %d %u %d %p\n", __FUNCTION__, size, type, stride, pointer);
 	fn_VertexPointer(size, type, stride, pointer);
 }
 
 void WINAPI gl::hk_Viewport(GLint x, GLint y, GLsizei width, GLsizei height)
 {
+	logger::print("%s %d %d %d %d\n", __FUNCTION__, x, y, width, height);
 	fn_Viewport(x, y, width, height);
 }

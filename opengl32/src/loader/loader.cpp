@@ -1,6 +1,7 @@
 #include <Windows.h>
 
 #include "loader/loader.h"
+#include "logger/logger.h"
 
 #include "loader/gl.h"
 #include "loader/glmf.h"
@@ -13,6 +14,8 @@ HMODULE g_module_handle = nullptr;
 
 bool loader::initialize()
 {
+	logger::initialize();
+
 	wchar_t path[MAX_PATH] {};
 
 	if (!ExpandEnvironmentStringsW(LIBRARY_PATH, path, MAX_PATH))
@@ -30,5 +33,6 @@ bool loader::initialize()
 
 bool loader::shutdown()
 {
+	logger::shutdown();
 	return (g_module_handle ? FreeLibrary(g_module_handle) : true);
 }

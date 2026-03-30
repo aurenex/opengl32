@@ -2,9 +2,6 @@
 
 #include "loader/loader.h"
 
-#include "glm/include/glm.hpp"
-#include "glm/include/gtc/type_ptr.hpp"
-
 BOOL APIENTRY DllMain(HINSTANCE hInstance, DWORD fdwReason, LPVOID lpReserved)
 {
 	switch (fdwReason)
