@@ -1,24 +1,24 @@
 #include <Windows.h>
 
 #include "loader/loader.h"
-#include "logger/logger.h"
 
 #include "loader/gl.h"
 #include "loader/glmf.h"
 #include "loader/wgl.h"
 
-#define LIBRARY_PATH \
-	LR"(%systemroot%\system32\opengl32.dll)"
+#define SYSTEM32_PATH \
+	LR"(%systemroot%\system32\)"
+
+#define LIBRARY_NAME "opengl32.dll"
 
 HMODULE g_module_handle = nullptr;
 
 bool loader::initialize()
 {
-	logger::initialize();
+	wchar_t path[MAX_PATH] { };
 
-	wchar_t path[MAX_PATH] {};
-
-	if (!ExpandEnvironmentStringsW(LIBRARY_PATH, path, MAX_PATH))
+	if (!ExpandEnvironmentStringsW(
+		SYSTEM32_PATH LIBRARY_NAME, path, MAX_PATH))
 		return false;
 
 	g_module_handle = LoadLibraryW(path);
@@ -33,6 +33,5 @@ bool loader::initialize()
 
 bool loader::shutdown()
 {
-	logger::shutdown();
 	return (g_module_handle ? FreeLibrary(g_module_handle) : true);
 }

@@ -1,9 +1,27 @@
-# opengl32
+# OpenGL32
 
-Proxy library for opengl32.dll
+A simple OpenGL32.dll proxy library with built-in API logger.
+
+![opengl32-preview](https://github.com/user-attachments/assets/8ae41563-cfe4-439c-8def-013748e0d405)
+
+### Compilation
+- Clone this repository.
+- Open the **simple-esp** solution file in [Visual Studio IDE][vs-download-link].
+- Select the target platform.
+- Press `ctrl + shift + b` to compile.
 
 ### Usage
-Just copy this proxy-library into game folder. Or if you are crazy, rename the original `opengl32.dll` library in the `system32` folder to something else and put this proxy library there.
-Don't forget to change the path to the original library in the [loader.cpp][original-library-path] file.
+Just copy the proxy library into the folder with the executable file that uses it and run it.
 
-[original-library-path]: <../master/opengl32/src/loader/loader.cpp#L10>
+### Alternative Usage
+You can go further and replace the original library in the `system32` folder.
+
+- Rename the original library in the system32 to any other name.
+- Change the name of the original library in the [loader.cpp][original-library-path].
+- Compile and paste proxy library into system32.
+
+Before use, we strongly recommend that you read the [license][license-link].
+
+[vs-download-link]: <https://visualstudio.microsoft.com/downloads/>
+[license-link]: <../master/license.txt>
+[original-library-path]: <../master/opengl32/src/loader/loader.cpp#L12>
