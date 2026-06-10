@@ -11,7 +11,7 @@ A simple OpenGL32.dll proxy library with built-in API logger.
 
 ### Compilation
 - Clone this repository.
-- Open the **simple-esp** solution file in [Visual Studio IDE][vs-download-link].
+- Open the **opengl32** solution file in [Visual Studio IDE][vs-download-link].
 - Select the target platform.
 - Press `ctrl + shift + b` to compile.
 
