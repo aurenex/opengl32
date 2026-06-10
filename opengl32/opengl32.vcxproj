@@ -189,6 +189,7 @@
     <ClCompile Include="src\loader\loader.cpp" />
     <ClCompile Include="src\loader\wgl.cpp" />
     <ClCompile Include="src\logger\logger.cpp" />
+    <ClCompile Include="src\thunk\thunk.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="opengl32.def" />
@@ -202,6 +203,7 @@
     <ClInclude Include="include\loader\loader.h" />
     <ClInclude Include="include\loader\wgl.h" />
     <ClInclude Include="include\logger\logger.h" />
+    <ClInclude Include="include\thunk\thunk.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

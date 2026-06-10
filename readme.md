@@ -4,6 +4,11 @@ A simple OpenGL32.dll proxy library with built-in API logger.
 
 ![opengl32-preview](https://github.com/user-attachments/assets/8ae41563-cfe4-439c-8def-013748e0d405)
 
+### Issues
+- Calls via pointers obtained from `wglGetProcAddress` are **not intercepted**.
+- Calls via pointers obtained from `wglGetDefaultProcAddress` are **not intercepted**.
+- Direct calls made through `GLDISPATCHTABLE` or `GLDISPATCHTABLE_FAST` are **not intercepted** either.
+
 ### Compilation
 - Clone this repository.
 - Open the **simple-esp** solution file in [Visual Studio IDE][vs-download-link].

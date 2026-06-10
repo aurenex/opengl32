@@ -1,5 +1,12 @@
 #include "loader/wgl.h"
+#include "thunk/thunk.h"
+
+// #define LOGGER_DISABLE_WGL_OUTPUT
 #include "logger/logger.h"
+
+#define LOAD_AND_CHECK(ptr, name) \
+    ptr = (decltype(ptr))GetProcAddress(hModule, name); \
+    if (!ptr) { PRINT_ERR("'%s' not found at %s:%d", name, __FUNCTION__, __LINE__); return false; }
 
 decltype(&wgl::hk_ChoosePixelFormat) wgl::fn_ChoosePixelFormat = nullptr;
 decltype(&wgl::hk_CopyContext) wgl::fn_CopyContext = nullptr;
@@ -29,181 +36,187 @@ decltype(&wgl::hk_UseFontOutlinesW) wgl::fn_UseFontOutlinesW = nullptr;
 
 bool wgl::initialize(HMODULE hModule)
 {
-	if (!(fn_ChoosePixelFormat = (decltype(fn_ChoosePixelFormat))GetProcAddress(hModule, "wglChoosePixelFormat"))) return false;
-	if (!(fn_CopyContext = (decltype(fn_CopyContext))GetProcAddress(hModule, "wglCopyContext"))) return false;
-	if (!(fn_CreateContext = (decltype(fn_CreateContext))GetProcAddress(hModule, "wglCreateContext"))) return false;
-	if (!(fn_CreateLayerContext = (decltype(fn_CreateLayerContext))GetProcAddress(hModule, "wglCreateLayerContext"))) return false;
-	if (!(fn_DeleteContext = (decltype(fn_DeleteContext))GetProcAddress(hModule, "wglDeleteContext"))) return false;
-	if (!(fn_DescribeLayerPlane = (decltype(fn_DescribeLayerPlane))GetProcAddress(hModule, "wglDescribeLayerPlane"))) return false;
-	if (!(fn_DescribePixelFormat = (decltype(fn_DescribePixelFormat))GetProcAddress(hModule, "wglDescribePixelFormat"))) return false;
-	if (!(fn_GetCurrentContext = (decltype(fn_GetCurrentContext))GetProcAddress(hModule, "wglGetCurrentContext"))) return false;
-	if (!(fn_GetCurrentDC = (decltype(fn_GetCurrentDC))GetProcAddress(hModule, "wglGetCurrentDC"))) return false;
-	if (!(fn_GetDefaultProcAddress = (decltype(fn_GetDefaultProcAddress))GetProcAddress(hModule, "wglGetDefaultProcAddress"))) return false;
-	if (!(fn_GetLayerPaletteEntries = (decltype(fn_GetLayerPaletteEntries))GetProcAddress(hModule, "wglGetLayerPaletteEntries"))) return false;
-	if (!(fn_GetPixelFormat = (decltype(fn_GetPixelFormat))GetProcAddress(hModule, "wglGetPixelFormat"))) return false;
-	if (!(fn_GetProcAddress = (decltype(fn_GetProcAddress))GetProcAddress(hModule, "wglGetProcAddress"))) return false;
-	if (!(fn_MakeCurrent = (decltype(fn_MakeCurrent))GetProcAddress(hModule, "wglMakeCurrent"))) return false;
-	if (!(fn_RealizeLayerPalette = (decltype(fn_RealizeLayerPalette))GetProcAddress(hModule, "wglRealizeLayerPalette"))) return false;
-	if (!(fn_SetLayerPaletteEntries = (decltype(fn_SetLayerPaletteEntries))GetProcAddress(hModule, "wglSetLayerPaletteEntries"))) return false;
-	if (!(fn_SetPixelFormat = (decltype(fn_SetPixelFormat))GetProcAddress(hModule, "wglSetPixelFormat"))) return false;
-	if (!(fn_ShareLists = (decltype(fn_ShareLists))GetProcAddress(hModule, "wglShareLists"))) return false;
-	if (!(fn_SwapBuffers = (decltype(fn_SwapBuffers))GetProcAddress(hModule, "wglSwapBuffers"))) return false;
-	if (!(fn_SwapLayerBuffers = (decltype(fn_SwapLayerBuffers))GetProcAddress(hModule, "wglSwapLayerBuffers"))) return false;
-	if (!(fn_SwapMultipleBuffers = (decltype(fn_SwapMultipleBuffers))GetProcAddress(hModule, "wglSwapMultipleBuffers"))) return false;
-	if (!(fn_UseFontBitmapsA = (decltype(fn_UseFontBitmapsA))GetProcAddress(hModule, "wglUseFontBitmapsA"))) return false;
-	if (!(fn_UseFontBitmapsW = (decltype(fn_UseFontBitmapsW))GetProcAddress(hModule, "wglUseFontBitmapsW"))) return false;
-	if (!(fn_UseFontOutlinesA = (decltype(fn_UseFontOutlinesA))GetProcAddress(hModule, "wglUseFontOutlinesA"))) return false;
-	if (!(fn_UseFontOutlinesW = (decltype(fn_UseFontOutlinesW))GetProcAddress(hModule, "wglUseFontOutlinesW"))) return false;
+	LOAD_AND_CHECK(fn_ChoosePixelFormat, "wglChoosePixelFormat")
+	LOAD_AND_CHECK(fn_CopyContext, "wglCopyContext")
+	LOAD_AND_CHECK(fn_CreateContext, "wglCreateContext")
+	LOAD_AND_CHECK(fn_CreateLayerContext, "wglCreateLayerContext")
+	LOAD_AND_CHECK(fn_DeleteContext, "wglDeleteContext")
+	LOAD_AND_CHECK(fn_DescribeLayerPlane, "wglDescribeLayerPlane")
+	LOAD_AND_CHECK(fn_DescribePixelFormat, "wglDescribePixelFormat")
+	LOAD_AND_CHECK(fn_GetCurrentContext, "wglGetCurrentContext")
+	LOAD_AND_CHECK(fn_GetCurrentDC, "wglGetCurrentDC")
+	LOAD_AND_CHECK(fn_GetDefaultProcAddress, "wglGetDefaultProcAddress")
+	LOAD_AND_CHECK(fn_GetLayerPaletteEntries, "wglGetLayerPaletteEntries")
+	LOAD_AND_CHECK(fn_GetPixelFormat, "wglGetPixelFormat")
+	LOAD_AND_CHECK(fn_GetProcAddress, "wglGetProcAddress")
+	LOAD_AND_CHECK(fn_MakeCurrent, "wglMakeCurrent")
+	LOAD_AND_CHECK(fn_RealizeLayerPalette, "wglRealizeLayerPalette")
+	LOAD_AND_CHECK(fn_SetLayerPaletteEntries, "wglSetLayerPaletteEntries")
+	LOAD_AND_CHECK(fn_SetPixelFormat, "wglSetPixelFormat")
+	LOAD_AND_CHECK(fn_ShareLists, "wglShareLists")
+	LOAD_AND_CHECK(fn_SwapBuffers, "wglSwapBuffers")
+	LOAD_AND_CHECK(fn_SwapLayerBuffers, "wglSwapLayerBuffers")
+	LOAD_AND_CHECK(fn_SwapMultipleBuffers, "wglSwapMultipleBuffers")
+	LOAD_AND_CHECK(fn_UseFontBitmapsA, "wglUseFontBitmapsA")
+	LOAD_AND_CHECK(fn_UseFontBitmapsW, "wglUseFontBitmapsW")
+	LOAD_AND_CHECK(fn_UseFontOutlinesA, "wglUseFontOutlinesA")
+	LOAD_AND_CHECK(fn_UseFontOutlinesW, "wglUseFontOutlinesW")
 
 	return true;
 }
 
 int WINAPI wgl::hk_ChoosePixelFormat(HDC hdc, CONST PIXELFORMATDESCRIPTOR* ppfd)
 {
-	logger::print("%s %p %p\n", __FUNCTION__, hdc, ppfd);
+	PRINT_WGL("%s %p %p\n", __FUNCTION__, hdc, ppfd);
 	return fn_ChoosePixelFormat(hdc, ppfd);
 }
 
 BOOL WINAPI wgl::hk_CopyContext(HGLRC hrcSource, HGLRC hrcDest, UINT fuMask)
 {
-	logger::print("%s %p %p %u\n", __FUNCTION__, hrcSource, hrcDest, fuMask);
+	PRINT_WGL("%s %p %p %u\n", __FUNCTION__, hrcSource, hrcDest, fuMask);
 	return fn_CopyContext(hrcSource, hrcDest, fuMask);
 }
 
 HGLRC WINAPI wgl::hk_CreateContext(HDC hdc)
 {
-	logger::print("%s %p\n", __FUNCTION__, hdc);
+	PRINT_WGL("%s %p\n", __FUNCTION__, hdc);
 	return fn_CreateContext(hdc);
 }
 
 HGLRC WINAPI wgl::hk_CreateLayerContext(HDC hdc, int iLayer)
 {
-	logger::print("%s %p %d\n", __FUNCTION__, hdc, iLayer);
+	PRINT_WGL("%s %p %d\n", __FUNCTION__, hdc, iLayer);
 	return fn_CreateLayerContext(hdc, iLayer);
 }
 
 BOOL WINAPI wgl::hk_DeleteContext(HGLRC hrc)
 {
-	logger::print("%s %p\n", __FUNCTION__, hrc);
+	PRINT_WGL("%s %p\n", __FUNCTION__, hrc);
 	return fn_DeleteContext(hrc);
 }
 
 BOOL WINAPI wgl::hk_DescribeLayerPlane(HDC hdc, int iPixelFormat, int iLayerPlane, UINT nBytes, LPLAYERPLANEDESCRIPTOR plpd)
 {
-	logger::print("%s %p %d %d %u %p\n", __FUNCTION__, hdc, iPixelFormat, iLayerPlane, nBytes, plpd);
+	PRINT_WGL("%s %p %d %d %u %p\n", __FUNCTION__, hdc, iPixelFormat, iLayerPlane, nBytes, plpd);
 	return fn_DescribeLayerPlane(hdc, iPixelFormat, iLayerPlane, nBytes, plpd);
 }
 
 int WINAPI wgl::hk_DescribePixelFormat(HDC hdc, int ipfd, UINT cjpfd, LPPIXELFORMATDESCRIPTOR ppfd)
 {
-	logger::print("%s %p %d %u %p\n", __FUNCTION__, hdc, ipfd, cjpfd, ppfd);
+	PRINT_WGL("%s %p %d %u %p\n", __FUNCTION__, hdc, ipfd, cjpfd, ppfd);
 	return fn_DescribePixelFormat(hdc, ipfd, cjpfd, ppfd);
 }
 
 HGLRC WINAPI wgl::hk_GetCurrentContext(VOID)
 {
-	logger::print("%s\n", __FUNCTION__);
+	PRINT_WGL("%s\n", __FUNCTION__);
 	return fn_GetCurrentContext();
 }
 
 HDC WINAPI wgl::hk_GetCurrentDC(VOID)
 {
-	logger::print("%s\n", __FUNCTION__);
+	PRINT_WGL("%s\n", __FUNCTION__);
 	return fn_GetCurrentDC();
 }
 
 PROC WINAPI wgl::hk_GetDefaultProcAddress(LPCSTR lpszProc)
 {
-	logger::print("%s %s\n", __FUNCTION__, lpszProc);
+	// Thunk generation not implemented for now
+	// Calls via those pointers won't be intercepted
+
+	PRINT_WGL("%s %s\n", __FUNCTION__, lpszProc);
 	return fn_GetDefaultProcAddress(lpszProc);
 }
 
 int WINAPI wgl::hk_GetLayerPaletteEntries(HDC hdc, int iLayerPlane, int iStart, int cEntries, COLORREF* pcr)
 {
-	logger::print("%s %p %d %d %d %p\n", __FUNCTION__, hdc, iLayerPlane, iStart, cEntries, pcr);
+	PRINT_WGL("%s %p %d %d %d %p\n", __FUNCTION__, hdc, iLayerPlane, iStart, cEntries, pcr);
 	return fn_GetLayerPaletteEntries(hdc, iLayerPlane, iStart, cEntries, pcr);
 }
 
 int WINAPI wgl::hk_GetPixelFormat(HDC hdc)
 {
-	logger::print("%s %p\n", __FUNCTION__, hdc);
+	PRINT_WGL("%s %p\n", __FUNCTION__, hdc);
 	return fn_GetPixelFormat(hdc);
 }
 
 PROC WINAPI wgl::hk_GetProcAddress(LPCSTR lpszProc)
 {
-	logger::print("%s %s\n", __FUNCTION__, lpszProc);
+	// Thunk generation not implemented for now
+	// Calls via those pointers won't be intercepted
+
+	PRINT_WGL("%s %s\n", __FUNCTION__, lpszProc);
 	return fn_GetProcAddress(lpszProc);
 }
 
 BOOL WINAPI wgl::hk_MakeCurrent(HDC hdc, HGLRC hrc)
 {
-	logger::print("%s %p %p\n", __FUNCTION__, hdc, hrc);
+	PRINT_WGL("%s %p %p\n", __FUNCTION__, hdc, hrc);
 	return fn_MakeCurrent(hdc, hrc);
 }
 
 BOOL WINAPI wgl::hk_RealizeLayerPalette(HDC hdc, int iLayerPlane, BOOL bRealize)
 {
-	logger::print("%s %p %d %d\n", __FUNCTION__, hdc, iLayerPlane, bRealize);
+	PRINT_WGL("%s %p %d %d\n", __FUNCTION__, hdc, iLayerPlane, bRealize);
 	return fn_RealizeLayerPalette(hdc, iLayerPlane, bRealize);
 }
 
 int WINAPI wgl::hk_SetLayerPaletteEntries(HDC hdc, int iLayerPlane, int iStart, int cEntries, CONST COLORREF* pcr)
 {
-	logger::print("%s %p %d %d %d %p\n", __FUNCTION__, hdc, iLayerPlane, iStart, cEntries, pcr);
+	PRINT_WGL("%s %p %d %d %d %p\n", __FUNCTION__, hdc, iLayerPlane, iStart, cEntries, pcr);
 	return fn_SetLayerPaletteEntries(hdc, iLayerPlane, iStart, cEntries, pcr);
 }
 
 BOOL WINAPI wgl::hk_SetPixelFormat(HDC hdc, int ipfd, CONST PIXELFORMATDESCRIPTOR* ppfd)
 {
-	logger::print("%s %p %d %p\n", __FUNCTION__, hdc, ipfd, ppfd);
+	PRINT_WGL("%s %p %d %p\n", __FUNCTION__, hdc, ipfd, ppfd);
 	return fn_SetPixelFormat(hdc, ipfd, ppfd);
 }
 
 BOOL WINAPI wgl::hk_ShareLists(HGLRC hrcSource, HGLRC hrcShare)
 {
-	logger::print("%s %p %p\n", __FUNCTION__, hrcSource, hrcShare);
+	PRINT_WGL("%s %p %p\n", __FUNCTION__, hrcSource, hrcShare);
 	return fn_ShareLists(hrcSource, hrcShare);
 }
 
 BOOL WINAPI wgl::hk_SwapBuffers(HDC hdc)
 {
-	logger::print("%s %p\n", __FUNCTION__, hdc);
+	PRINT_WGL("%s %p\n", __FUNCTION__, hdc);
 	return fn_SwapBuffers(hdc);
 }
 
 BOOL WINAPI wgl::hk_SwapLayerBuffers(HDC hdc, UINT fuFlags)
 {
-	logger::print("%s %p %u\n", __FUNCTION__, hdc, fuFlags);
+	PRINT_WGL("%s %p %u\n", __FUNCTION__, hdc, fuFlags);
 	return fn_SwapLayerBuffers(hdc, fuFlags);
 }
 
 DWORD WINAPI wgl::hk_SwapMultipleBuffers(UINT cBuffers, CONST WGLSWAP* pwswapAll)
 {
-	logger::print("%s %u %p\n", __FUNCTION__, cBuffers, pwswapAll);
+	PRINT_WGL("%s %u %p\n", __FUNCTION__, cBuffers, pwswapAll);
 	return fn_SwapMultipleBuffers(cBuffers, pwswapAll);
 }
 
 BOOL WINAPI wgl::hk_UseFontBitmapsA(HDC hdc, DWORD first, DWORD count, DWORD listBase)
 {
-	logger::print("%s %p %u %u %u\n", __FUNCTION__, hdc, first, count, listBase);
+	PRINT_WGL("%s %p %u %u %u\n", __FUNCTION__, hdc, first, count, listBase);
 	return fn_UseFontBitmapsA(hdc, first, count, listBase);
 }
 
 BOOL WINAPI wgl::hk_UseFontBitmapsW(HDC hdc, DWORD first, DWORD count, DWORD listBase)
 {
-	logger::print("%s %p %u %u %u\n", __FUNCTION__, hdc, first, count, listBase);
+	PRINT_WGL("%s %p %u %u %u\n", __FUNCTION__, hdc, first, count, listBase);
 	return fn_UseFontBitmapsW(hdc, first, count, listBase);
 }
 
 BOOL WINAPI wgl::hk_UseFontOutlinesA(HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT chordalDeviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf)
 {
-	logger::print("%s %p %u %u %u %f %f %d %p\n", __FUNCTION__, hDC, first, count, listBase, chordalDeviation, extrusion, format, lpgmf);
+	PRINT_WGL("%s %p %u %u %u %f %f %d %p\n", __FUNCTION__, hDC, first, count, listBase, chordalDeviation, extrusion, format, lpgmf);
 	return fn_UseFontOutlinesA(hDC, first, count, listBase, chordalDeviation, extrusion, format, lpgmf);
 }
 
 BOOL WINAPI wgl::hk_UseFontOutlinesW(HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT chordalDeviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf)
 {
-	logger::print("%s %p %u %u %u %f %f %d %p\n", __FUNCTION__, hDC, first, count, listBase, chordalDeviation, extrusion, format, lpgmf);
+	PRINT_WGL("%s %p %u %u %u %f %f %d %p\n", __FUNCTION__, hDC, first, count, listBase, chordalDeviation, extrusion, format, lpgmf);
 	return fn_UseFontOutlinesW(hDC, first, count, listBase, chordalDeviation, extrusion, format, lpgmf);
 }
