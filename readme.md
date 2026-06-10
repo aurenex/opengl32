@@ -25,8 +25,14 @@ You can go further and replace the original library in the `system32` folder.
 - Change the name of the original library in the [loader.cpp][original-library-path].
 - Compile and paste proxy library into system32.
 
-Before use, we strongly recommend that you read the [license][license-link].
+Subscribe to my Telegram [channel][tg-channel-link] or make a donation if you want to support me.
+
+```
+BTC bc1qcmfgc3780pqr4p93t57k76jhy7yttuzc0pc8pv
+ETH 0xa3b829A5D4302De54eE9f3F2cF64409f4D2C1b38
+TON UQAGAeIjsUFmRR4FWs7fRGB6CvU1AzC2q9i58Bw5_nZSp1Af
+```
 
 [vs-download-link]: <https://visualstudio.microsoft.com/downloads/>
-[license-link]: <../master/license.txt>
 [original-library-path]: <../master/opengl32/src/loader/loader.cpp#L12>
+[tg-channel-link]: <https://t.me/aurenex>
